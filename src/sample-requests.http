@@ -22,3 +22,17 @@ Content-Type: {{contentType}}
         "johndoe@acme.com"
     ]
 }
+
+###
+
+@tripId = {{createTrip.response.body.$.trip_id}}
+
+# @name confirmTrip
+GET {{baseUrl}}/trips/{{tripId}}/confirm HTTP/1.1
+
+###
+
+@participantId = {{confirmTrip.response.body.$.participant_ids[0]}}
+
+# @name confirmParticipant
+GET {{baseUrl}}/participants/{{participantId}}/confirm HTTP/1.1
