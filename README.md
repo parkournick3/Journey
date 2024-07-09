@@ -1,4 +1,4 @@
-# journey
+# plann.er api
 
 To install dependencies:
 
