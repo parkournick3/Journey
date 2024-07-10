@@ -36,3 +36,37 @@ GET {{baseUrl}}/trips/{{tripId}}/confirm HTTP/1.1
 
 # @name confirmParticipant
 GET {{baseUrl}}/participants/{{participantId}}/confirm HTTP/1.1
+
+###
+
+# @name createActivity
+# @prompt title
+POST {{baseUrl}}/trips/{{tripId}}/activities HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+    "title": "{{title}}",
+    "occurs_at": "{{$datetime iso8601 2 d}}"
+}
+
+###
+
+# @name getActivities
+GET {{baseUrl}}/trips/{{tripId}}/activities HTTP/1.1
+
+###
+
+# @name createLink
+# @prompt title
+POST {{baseUrl}}/trips/{{tripId}}/links HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+    "title": "{{title}}",
+    "url": "https://github.com/parkournick3"
+}
+
+###
+
+# @name getLinks
+GET {{baseUrl}}/trips/{{tripId}}/links HTTP/1.1

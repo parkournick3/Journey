@@ -12,6 +12,10 @@ import "dayjs/locale/pt-br";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import { confirmTrip } from "./routes/confirm-trip";
 import { confirmParticipant } from "./routes/confirm-participant";
+import { createActivity } from "./routes/create-activity";
+import { createLink } from "./routes/create-link";
+import { getActivities } from "./routes/get-activities";
+import { getLinks } from "./routes/get-links";
 
 dayjs.locale("pt-br");
 dayjs.extend(localizedFormat);
@@ -28,6 +32,10 @@ app.setSerializerCompiler(serializerCompiler);
 app.register(createTrip);
 app.register(confirmTrip);
 app.register(confirmParticipant);
+app.register(createActivity);
+app.register(getActivities);
+app.register(createLink);
+app.register(getLinks);
 
 app.listen({ port: PORT }).then(() => {
   logger.info(`Server running on port ${PORT}!`);
