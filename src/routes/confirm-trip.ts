@@ -2,12 +2,12 @@ import type { FastifyInstance } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
-import { BASE_URL, FRONT_BASE_URL } from "../lib/constants";
 import dayjs from "dayjs";
 import { getMailClient } from "../lib/mail";
 import { logger } from "../lib/logger";
 import nodemailer from "nodemailer";
 import { ClientError } from "../errors/client-error";
+import { env } from "../env";
 
 export const confirmTrip = async (app: FastifyInstance) => {
   app.withTypeProvider<ZodTypeProvider>().get(
@@ -43,7 +43,7 @@ export const confirmTrip = async (app: FastifyInstance) => {
 
       if (trip.is_confirmed) {
         return redirect
-          ? reply.redirect(`${FRONT_BASE_URL}/trips/${trip.id}`)
+          ? reply.redirect(`${env.FRONT_BASE_URL}/trips/${trip.id}`)
           : {
               participant_ids: trip.participants.map(
                 (participant) => participant.id
@@ -67,7 +67,7 @@ export const confirmTrip = async (app: FastifyInstance) => {
 
       await Promise.all(
         trip.participants.map(async (participant) => {
-          const confirmationLink = `${BASE_URL}/participants/${participant.id}/confirm`;
+          const confirmationLink = `${env.BASE_URL}/participants/${participant.id}/confirm`;
 
           const message = await mail.sendMail({
             from: {
@@ -99,7 +99,7 @@ export const confirmTrip = async (app: FastifyInstance) => {
       );
 
       return redirect
-        ? reply.redirect(`${FRONT_BASE_URL}/trips/${trip.id}`)
+        ? reply.redirect(`${env.FRONT_BASE_URL}/trips/${trip.id}`)
         : {
             participant_ids: trip.participants.map(
               (participant) => participant.id

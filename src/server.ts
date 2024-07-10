@@ -6,7 +6,6 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from "fastify-type-provider-zod";
-import { PORT } from "./lib/constants";
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import localizedFormat from "dayjs/plugin/localizedFormat";
@@ -22,6 +21,7 @@ import { updateTrip } from "./routes/update-trip";
 import { getTrip } from "./routes/get-trip";
 import { getParticipant } from "./routes/get-participant";
 import { errorHandler } from "./error-handler";
+import { env } from "./env";
 
 dayjs.locale("pt-br");
 dayjs.extend(localizedFormat);
@@ -50,6 +50,6 @@ app.register(updateTrip);
 app.register(getTrip);
 app.register(getParticipant);
 
-app.listen({ port: PORT }).then(() => {
-  logger.info(`Server running on port ${PORT}!`);
+app.listen({ port: env.PORT }).then(() => {
+  logger.info(`Server running on port ${env.PORT}!`);
 });
