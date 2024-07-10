@@ -16,6 +16,11 @@ import { createActivity } from "./routes/create-activity";
 import { createLink } from "./routes/create-link";
 import { getActivities } from "./routes/get-activities";
 import { getLinks } from "./routes/get-links";
+import { getParticipants } from "./routes/get-participants";
+import { createInvite } from "./routes/create-invite";
+import { updateTrip } from "./routes/update-trip";
+import { getTrip } from "./routes/get-trip";
+import { getParticipant } from "./routes/get-participant";
 
 dayjs.locale("pt-br");
 dayjs.extend(localizedFormat);
@@ -36,6 +41,11 @@ app.register(createActivity);
 app.register(getActivities);
 app.register(createLink);
 app.register(getLinks);
+app.register(getParticipants);
+app.register(createInvite);
+app.register(updateTrip);
+app.register(getTrip);
+app.register(getParticipant);
 
 app.listen({ port: PORT }).then(() => {
   logger.info(`Server running on port ${PORT}!`);

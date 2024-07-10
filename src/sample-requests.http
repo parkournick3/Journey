@@ -24,8 +24,25 @@ Content-Type: {{contentType}}
 }
 
 ###
-
 @tripId = {{createTrip.response.body.$.trip_id}}
+
+# @name updateTrip
+# @prompt destination
+PUT {{baseUrl}}/trips/{{tripId}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+    "destination": "{{destination}}",
+    "starts_at": "{{$datetime iso8601 2 d}}",
+    "ends_at": "{{$datetime iso8601 8 d}}"
+}
+
+###
+
+# @name getTrip
+GET {{baseUrl}}/trips/{{tripId}} HTTP/1.1
+
+###
 
 # @name confirmTrip
 GET {{baseUrl}}/trips/{{tripId}}/confirm HTTP/1.1
@@ -70,3 +87,24 @@ Content-Type: {{contentType}}
 
 # @name getLinks
 GET {{baseUrl}}/trips/{{tripId}}/links HTTP/1.1
+
+###
+
+# @name getParticipants
+GET {{baseUrl}}/trips/{{tripId}}/participants HTTP/1.1
+
+###
+
+# @name getParticipant
+GET {{baseUrl}}/participants/{{participantId}} HTTP/1.1
+
+###
+
+# @name createInvite
+# @prompt email
+POST {{baseUrl}}/trips/{{tripId}}/invites HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+    "email": "{{email}}"
+}

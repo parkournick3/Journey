@@ -48,7 +48,7 @@ export const createTrip = async (app: FastifyInstance) => {
             createMany: {
               data: [
                 {
-                  name: owner_email,
+                  name: owner_name,
                   email: owner_email,
                   is_confirmed: true,
                   is_owner: true,
