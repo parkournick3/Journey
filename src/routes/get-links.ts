@@ -25,7 +25,7 @@ export const getLinks = async (app: FastifyInstance) => {
         },
       });
 
-      if (!trip) throw new Error("Trip not found");
+      if (!trip) throw new ClientError("Trip not found");
 
       return { links: trip.links };
     }

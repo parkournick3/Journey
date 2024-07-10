@@ -21,6 +21,7 @@ import { createInvite } from "./routes/create-invite";
 import { updateTrip } from "./routes/update-trip";
 import { getTrip } from "./routes/get-trip";
 import { getParticipant } from "./routes/get-participant";
+import { errorHandler } from "./error-handler";
 
 dayjs.locale("pt-br");
 dayjs.extend(localizedFormat);
@@ -33,6 +34,8 @@ app.register(cors, {
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+app.setErrorHandler(errorHandler);
 
 app.register(createTrip);
 app.register(confirmTrip);

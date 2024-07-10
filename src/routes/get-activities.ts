@@ -30,7 +30,7 @@ export const getActivities = async (app: FastifyInstance) => {
         },
       });
 
-      if (!trip) throw new Error("Trip not found");
+      if (!trip) throw new ClientError("Trip not found");
 
       const diffInDaysBeetweenTripStartAndEnd = dayjs(trip.ends_at).diff(
         trip.starts_at,
