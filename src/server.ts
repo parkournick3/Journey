@@ -50,6 +50,8 @@ app.register(updateTrip);
 app.register(getTrip);
 app.register(getParticipant);
 
-app.listen({ port: env.PORT }).then(() => {
+const host = "RENDER" in process.env ? `0.0.0.0` : `localhost`;
+
+app.listen({ host, port: env.PORT }).then(() => {
   logger.info(`Server running on port ${env.PORT}!`);
 });

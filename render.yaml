@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: plann.er
+    runtime: node
+    plan: free
+    autoDeploy: true
+    buildCommand: bun install
+    startCommand: bun start
