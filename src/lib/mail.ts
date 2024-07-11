@@ -20,7 +20,7 @@ export const getMailClient = async () => {
     transporter = await nodemailer.createTransport({
       host: env.SMTP_SERVER,
       port: env.SMTP_PORT,
-      secure: true,
+      secure: false,
       auth: {
         user: env.SMTP_USERNAME,
         pass: env.SMTP_PASSWORD,
