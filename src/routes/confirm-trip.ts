@@ -72,7 +72,7 @@ export const confirmTrip = async (app: FastifyInstance) => {
           const message = await mail.sendMail({
             from: {
               name: "Equipe plann.er",
-              address: "oi@plann.er",
+              address: "planner@nicolasalexandre.tech",
             },
             to: participant.email,
             subject: `Confirme sua viagem para ${trip.destination} em ${formattedStartDate}`,

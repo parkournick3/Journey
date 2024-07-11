@@ -66,14 +66,14 @@ export const createTrip = async (app: FastifyInstance) => {
       const formattedStartDate = dayjs(starts_at).format("LL");
       const formattedEndDate = dayjs(ends_at).format("LL");
 
-      const confirmationLink = `${env.BASE_URL}/${trip.id}/confirm`;
+      const confirmationLink = `${env.BASE_URL}/trips/${trip.id}/confirm`;
 
       const mail = await getMailClient();
 
       const message = await mail.sendMail({
         from: {
           name: "Equipe plann.er",
-          address: "oi@plann.er",
+          address: "planner@nicolasalexandre.tech",
         },
         to: {
           name: owner_name,
