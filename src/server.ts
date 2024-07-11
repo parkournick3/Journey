@@ -22,6 +22,7 @@ import { getTrip } from "./routes/get-trip";
 import { getParticipant } from "./routes/get-participant";
 import { errorHandler } from "./error-handler";
 import { env } from "./env";
+import { healthcheck } from "./routes/healthcheck";
 
 dayjs.locale("pt-br");
 dayjs.extend(localizedFormat);
@@ -49,6 +50,7 @@ app.register(createInvite);
 app.register(updateTrip);
 app.register(getTrip);
 app.register(getParticipant);
+app.register(healthcheck);
 
 const host = "RENDER" in process.env ? `0.0.0.0` : `localhost`;
 
